@@ -1,6 +1,7 @@
 package vallegrande.edu.pe.controller;
 
 import vallegrande.edu.pe.model.Libro;
+import vallegrande.edu.pe.model.Autor;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -11,9 +12,13 @@ public class BibliotecaController {
     //Lista donden almacenaremos nuestros libros
     private ArrayList<Libro> libros;
 
+    //Lista donde almacenaremos nuestros autores
+    private ArrayList<Autor> autores;
+
     //Constructor
     public BibliotecaController(){
         libros = new ArrayList<>();
+        autores = new ArrayList<>();
     }
 
     //Registrar
@@ -46,6 +51,24 @@ public class BibliotecaController {
         }
         if (!encontrado){
             System.out.println("No se encontro ningun libro");
+        }
+    }
+
+    //Registrar autor
+    public void agregarAutor(Autor autor){
+        autores.add(autor);
+        System.out.println("Autor registrado correctamente");
+    }
+
+    //Listar autores
+    public void listarAutores(){
+        if(autores.isEmpty()){
+            System.out.println("No hay autores registrados");
+            return;
+        }
+        System.out.println("LISTA DE AUTORES");
+        for ( Autor autor: autores){
+            autor.mostrarAutor();
         }
     }
 

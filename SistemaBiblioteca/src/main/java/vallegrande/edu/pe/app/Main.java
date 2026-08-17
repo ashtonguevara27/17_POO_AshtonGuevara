@@ -3,6 +3,7 @@ package vallegrande.edu.pe.app;
 
 import vallegrande.edu.pe.controller.BibliotecaController;
 import vallegrande.edu.pe.model.Libro;
+import vallegrande.edu.pe.model.Autor;
 import vallegrande.edu.pe.view.BibliotecaView;
 
 import java.util.Scanner;
@@ -47,12 +48,32 @@ public class Main {
                     controller.buscarLibro(criterio);
                     break;
                 case 4:
+                    System.out.println("ID:");
+                    int idAutor = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("Nombre del Autor:");
+                    String nombreAutor = scanner.nextLine();
+                    System.out.println("Nacionalidad:");
+                    String nacionalidad = scanner.nextLine();
+
+                    //Validar que el nombre no este vacio
+                    if (nombreAutor.isEmpty()) {
+                        System.out.println("El nombre del autor no puede estar vacio");
+                    } else {
+                        Autor nuevoAutor = new Autor(idAutor, nombreAutor, nacionalidad);
+                        controller.agregarAutor(nuevoAutor);
+                    }
+                    break;
+                case 5:
+                    controller.listarAutores();
+                    break;
+                case 6:
                     System.out.println("Hasta luego.");
                     break;
                 default:
                     System.out.println("Opcion no valida");
             }
-        } while (opcion != 4);
+        } while (opcion != 6);
         scanner.close();
     }
 
